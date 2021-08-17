@@ -1,5 +1,32 @@
 # InnovateFPGA2021
 
+Early Draft : Work in Progress
+
+## A demo IoT solution to connect FCC to Azure IoT
+
+This is a sample IoT application to help contestants to connect and visualize data.  This sample IoT solution covers following scenarios :
+
+- Basic Device Management  
+  - Provision a device
+  - Connects a device to Azure IoT
+  - View and delete device identity
+- Visualize telemetry (messages) from the device in Web UI
+- Visualize device events such as device connect and disconnect in Web UI  
+
+<< To do : Update diagram >>
+
+![Solution Diagram](images/solution-diagram.png)
+
+## Domains in the solution
+
+This solution is consist of 3 domains.
+
+- IoT Device and Data
+- Application
+- Device Management
+
+<< To do : Add descriptions/explanations >>
+
 ## Requirements
 
 - Azure Subscription  
@@ -18,6 +45,8 @@ Click **Deploy to Azure** button below
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdaisukeiot%2FInnovateFPGA2021%2Fmain%2Fazuredeploy.json)
 
 ## 2. Create a new resource group
+
+<< To do : Update steps & screenshots >>
 
 A resource group is a container that holds related resources for an Azure solution.  Similar to folder and files.
 

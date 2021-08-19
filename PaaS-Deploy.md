@@ -1,6 +1,6 @@
 # Deploy PaaS IoT Solution
 
-<< Draft : Ready for review.  Will update screenshots >>
+<< Draft : Ready for review>>
 
 This sample solution is built with 6 Azure IoT Platform services.
 
@@ -28,7 +28,7 @@ With this sample solution, you can perform basic IoT operations:
 Click **Deploy to Azure** button below.  The button will take you to Azure Portal and loads [Azure Resource Manager (ARM) template](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 > [!TIP]  
-> https://portal.azure.com is called **Azure Portal** which is a web-based, unified GUI tool where you can monitor and manage Azure services.
+> <https://portal.azure.com> is called **Azure Portal** which is a web-based, unified GUI tool where you can monitor and manage Azure services.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdaisukeiot%2FInnovateFPGA2021%2Fmain%2Fazuredeploy.json)
 
@@ -41,7 +41,7 @@ Each solution requires a few unique settings and parameters.  Please provide inf
 
 | Setting        | Description | Example|
 |----------------|-------------|--------|
-| Subscription   | Select your Azure subscription from the list.  If you do not have one, please sign up [free subscription](https://azure.microsoft.com/free/). |                                |
+| Subscription   | Select your Azure subscription from the list.  If you do not have one, please sign up [free subscription](https://azure.microsoft.com/free/). | |
 | Resource Group | Resource group is a way to organize resources (services).  To learn more visit [here](/azure/azure-resource-manager/management/manage-resource-groups-portal).  Create new resource group by clicking `Create new`.                                   | MyInnovateFPGAGroup            |
 | Region         | Select nearest location.  To learn more, visit [here](https://azure.microsoft.com/global-infrastructure/geographies/#overview).                                                                                                                       | West US 2 for Pacific Timezone |
 | Unique ID      | Default names given to all resources are InnovateFPGA-&lt;ServiceName&gt;-&lt;Your Unique ID&gt;.  (E.g. InnovateFPGA-IoTHub-&lt;Unique Id&gt;)  Since some services require globally unique names so please make it unique, or accept random string. | YourName01                     |
@@ -82,5 +82,5 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 ## Next Step
 
-[Provision DE10-Nano](PaaS-Instruction.md) to your IoT Solution to interact with DE10-Nano.  
-[Back to README](README.md)
+- [Provision DE10-Nano](PaaS-Instruction.md) to your IoT Solution to interact with DE10-Nano.  
+- [Back to README](README.md)

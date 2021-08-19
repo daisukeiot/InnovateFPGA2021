@@ -57,5 +57,9 @@
     }
   ],
   "outputs": {
+    "_Web_Site_Address": {
+      "type": "String",
+      "value": "[concat('https://', variables('iotcentral').subdomain, '.azureiotcentral.com')]"
+    }
   }
 }

@@ -17,13 +17,16 @@ Each instance of IoT Central deployment is called `IoT Central Application`.  Fo
 
 ![SaaS01](images/SaaS-01.png)
 
-| Setting        | Description                                                                                                                                                                    | Example    |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Subscription   | Select your Azure subscription from the list.                                                                                                                                  |            |
-| Resource Group | Resource group is a way to organize resources (services).  To learn more visit [here](/azure/azure-resource-manager/management/manage-resource-groups-portal).  Create new resource group by clicking `Create new`.| MyInnovateFPGAGroup           |
+| Setting        | Description  | Example    |
+|----------------|--------------|------------|
+| Subscription   | Select your Azure subscription from the list. |            |
+| Resource Group | Resource group is a way to organize resources (services).  To learn more visit [here](/azure/azure-resource-manager/management/manage-resource-groups-portal).  Create new resource group by clicking `Create new`.| MyInnovateFPGAIoTC           |
 | Region         | Select nearest location.  To learn more, visit [here](https://azure.microsoft.com/global-infrastructure/geographies/#overview).                                                                                                                                                       | West US 2 for Pacific Timezone           |
-| Iot Central Application Nam      | Default name given is with 'InnovateFPGA-` prefix and random strings (E.g. InnovateFPGA-&lt;abx73&gt;).  Accept default name or specify your own unique name.  Since IoT Central uses this name for URL, please make sure you provide unique name without space. | MyInnovateFPGA-IoTC01 |
+| Iot Central Application Nam      | Default name given is with 'InnovateFPGA-` prefix and random strings (E.g. InnovateFPGA-&lt;abx73&gt;).  Accept default name or specify your own unique name.  Since IoT Central uses this name for URL, please make sure you provide unique name without space or special characters. | MyInnovateFPGA-IoTC01 |
 | IoT Central Location    | Location (region/country) to deploy IoT Central application.  |            |
+
+> [!NOTE]  
+> For IoT Central, `Region` setting does not really matter.  The new IoT Central application will be deployed based on `IoT Central Location` setting.
 
 ## 3. Review and start IoT Central deployment
 
@@ -42,7 +45,7 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
     ![PaaS04](images/SaaS-04.png)
 
-1. Open a new browser tab to access your solution
+1. Open a new browser tab to access your new IoT Central application
 
     ![SaaS05](images/SaaS-05.png)
 
@@ -51,5 +54,5 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 ## Next Step
 
-[Provision DE10-Nano](SaaS-Instruction.md) to your IoT Central to interact.  
-[Back to README](README.md)
+- [Provision DE10-Nano](SaaS-Provision.md) to your IoT Central to interact.  
+- [Back to README](README.md)

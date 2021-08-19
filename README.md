@@ -16,11 +16,11 @@ This page describes how to deploy IoT solution in Azure using Azure Resource Man
 Microsoft provides Platform as a Service (PaaS) as well as Software as a Service (SaaS).  Depending on your needs, you may choose to deploy one of two or both.  
 
 - [Deploy PaaS solution](PaaS-Deploy.md) : IoT Hub based sample IoT solution  
-  - [Provision DE10-Nano](PaaS-Instruction.md) to the Sample IoT Solution
-  - PaaS : [Technical Deep Dive](PaaS.md)
+  - [Provision DE10-Nano](PaaS-Provision.md) to the Sample IoT Solution
+  - PaaS : [Technical Deep Dive](PaaS-DeepDive.md)
 
 - [Deploy SaaS solution](SaaS-Deploy.md) : Azure IoT Central pre-configured application
-  - [Provision DE10-Nano](SaaS-Instruction.md) to your IoT Central Application
+  - [Provision DE10-Nano](SaaS-Provision.md) to your IoT Central Application
 
 ## Resources
 

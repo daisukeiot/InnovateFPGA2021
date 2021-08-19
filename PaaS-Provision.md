@@ -74,6 +74,9 @@ Once your DE10-Nano is provisioned and connected, you should see device events s
 
 ![DPS05](images/DPS-05.png)
 
+> [!TIP]  
+> You can see details of events and telemetry by clicking the blue button on the left of each row.
+
 Learn more about Device Events from IoT Hub : <https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-event-grid#event-types>
 
 ## Completed
@@ -82,5 +85,6 @@ Congratulations.  You are now connect to IoT Hub and you can visualize device ev
 
 ## Next Step
 
-- [Deep Dive on sample IoT solution](PaaS.md)
+- Connecting IoT Edge module to sample IoT solution : TBD : reference to Kawai-san's documentation?
+- [Deep Dive on sample IoT solution](PaaS-DeepDive.md)
 - [Back to README](README.md)

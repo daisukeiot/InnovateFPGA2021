@@ -12,7 +12,7 @@ This sample solution is built with 6 Azure IoT Platform services.
 - Azure [SignalR](https://azure.microsoft.com/services/signalr-service/) : To feed real-time data to the web application.
 - [IoT Plug and Play](https://aka.ms/iotpnp) enabled
 
-Click [here](PaaS.md) to learn more in details.
+Click [here](PaaS-DeepDive.md) to learn more in details.
 
 With this sample solution, you can perform basic IoT operations:
 
@@ -82,5 +82,5 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 ## Next Step
 
-- [Provision DE10-Nano](PaaS-Instruction.md) to your IoT Solution to interact with DE10-Nano.  
+- [Provision DE10-Nano](PaaS-Provision.md) to your IoT Solution to interact with DE10-Nano.  
 - [Back to README](README.md)

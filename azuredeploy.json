@@ -112,7 +112,6 @@
           "variables": {},
           "resources": [
             {
-
               "type": "Microsoft.EventHub/namespaces",
               "name": "[variables('eventhubs').nameSpace]",
               "apiVersion": "[variables('eventhubs').apiVersion]",
@@ -127,7 +126,6 @@
               }
             },
             {
-
               "type": "Microsoft.Devices/IotHubs",
               "name": "[variables('iothub').name]",
               "apiVersion": "[variables('iothub').apiVersion]",
@@ -141,7 +139,6 @@
               }
             },
             {
-
               "type": "Microsoft.Devices/provisioningServices",
               "name": "[variables('dps').name]",
               "apiVersion": "[variables('dps').apiVersion]",
@@ -191,7 +188,6 @@
       }
     },
     {
-
       "type": "Microsoft.EventHub/namespaces",
       "apiVersion": "[variables('eventhubs').apiVersion]",
       "name": "[variables('eventhubs').nameSpace]",
@@ -264,7 +260,6 @@
       ]
     },
     {
-
       "type": "Microsoft.Devices/IotHubs",
       "apiVersion": "[variables('iothub').apiVersion]",
       "name": "[variables('iothub').name]",
@@ -374,7 +369,7 @@
       "resources": []
     },
     {
-     "type": "Microsoft.EventGrid/systemTopics",
+      "type": "Microsoft.EventGrid/systemTopics",
       "apiVersion": "[variables('eventGrid').apiVersion]",
       "name": "[variables('eventGrid').iothubSystemTopic]",
       "location": "[variables('location')]",

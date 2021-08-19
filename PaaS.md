@@ -50,6 +50,12 @@ Device Twin is used to communicate settings from Cloud to devices, which is call
 
 Sometimes Cloud needs to communicate with the device and needs to ensure the communication is received.  This type of activities require `synchronous` communication.  In other words, the sender (Cloud application) sends data, and the receiver (device) must respond.  The requester needs to know if the receiver received data, and processed it or not.  This communication can be achieved using Device Method, or Command in Digital Twin/IoT Plug and Play world.
 
+## Ingesting Data
+
+## Processing Data
+
+## Taking action
+
 ## Next Step
 
 - [Back to README](README.md)

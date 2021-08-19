@@ -11,7 +11,7 @@
         "description": "Unique ID.  E.g. your name.  Must be Alphanumeric (a~z, 0~9), and 5~12 characters"
       }
     },
-    "_IotHubSku": {
+    "IotHubSku": {
       "defaultValue": "F1",
       "allowedValues": [
         "S1",
@@ -134,7 +134,7 @@
                 "ENV": "[variables('envTag')]"
               },
               "sku": {
-                "name": "[variables('IoTHubSKU')[parameters('_IotHubSku')].skuname]",
+                "name": "[variables('IoTHubSKU')[parameters('IotHubSku')].skuname]",
                 "capacity": 1
               }
             },
@@ -273,7 +273,7 @@
         "ENV": "[variables('envTag')]"
       },
       "sku": {
-        "name": "[variables('iothubsku')[parameters('_IotHubSku')].skuName]",
+        "name": "[variables('iothubsku')[parameters('IotHubSku')].skuName]",
         "capacity": 1
       },
       "identity": {
@@ -284,7 +284,7 @@
         "eventHubEndpoints": {
           "events": {
             "retentionTimeInDays": 1,
-            "partitionCount": "[variables('iothubsku')[parameters('_IotHubSku')].partitionCount]"
+            "partitionCount": "[variables('iothubsku')[parameters('IotHubSku')].partitionCount]"
           }
         },
         "routing": {

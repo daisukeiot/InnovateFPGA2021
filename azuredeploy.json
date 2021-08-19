@@ -19,33 +19,7 @@
       ],
       "type": "String",
       "metadata": {
-        "description": "True to install IoT Central (vs. IoT Hub)"
-      }
-    },
-    "IotCentral": {
-      "defaultValue": "No",
-      "allowedValues": [
-        "Yes",
-        "No"
-      ],
-      "type": "String",
-      "metadata": {
-        "description": "True to install IoT Central (vs. IoT Hub)"
-      }
-    },
-    "_IotCentralLocation": {
-      "defaultValue": "unitedstates",
-      "allowedValues": [
-        "asiapacific",
-        "australia",
-        "europe",
-        "japan",
-        "uk",
-        "unitedstates"
-      ],
-      "type": "String",
-      "metadata": {
-        "description": "True to install IoT Central (vs. IoT Hub)"
+        "description": "IoT Hub SKU.  F1 : Free, S1 :Standard.  If you plan to send more than 8k messages per day, please select S1."
       }
     }
   },
@@ -75,12 +49,6 @@
       "cgFunctions": "telemetry-functions-cg",
       "ruleListen": "TelemetryListenRule",
       "ruleSend": "TelemetrySendRule"
-    },
-    "iotcentral": {
-      "apiVersion": "2021-01-01-preview",
-      "sku": "F1",
-      "displayName": "InnovateFPGA IoTC",
-      "subdomain": "[concat('InnovateFPGAIoTC-', parameters('UniqueID'))]"
     },
     "dps": {
       "apiVersion": "2020-03-01",
@@ -128,7 +96,6 @@
   },
   "resources": [
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deployment').apiVersion]",
       "name": "Deploy-IoT",
@@ -145,7 +112,7 @@
           "variables": {},
           "resources": [
             {
-              "condition": "[equals(parameters('IotCentral'), 'No')]",
+
               "type": "Microsoft.EventHub/namespaces",
               "name": "[variables('eventhubs').nameSpace]",
               "apiVersion": "[variables('eventhubs').apiVersion]",
@@ -160,7 +127,7 @@
               }
             },
             {
-              "condition": "[equals(parameters('IotCentral'), 'No')]",
+
               "type": "Microsoft.Devices/IotHubs",
               "name": "[variables('iothub').name]",
               "apiVersion": "[variables('iothub').apiVersion]",
@@ -174,7 +141,7 @@
               }
             },
             {
-              "condition": "[equals(parameters('IotCentral'), 'No')]",
+
               "type": "Microsoft.Devices/provisioningServices",
               "name": "[variables('dps').name]",
               "apiVersion": "[variables('dps').apiVersion]",
@@ -186,23 +153,6 @@
                 "name": "[variables('dps').sku]",
                 "capacity": 1
               }
-            },
-            {
-              "condition": "[equals(parameters('IotCentral'), 'Yes')]",
-              "type": "Microsoft.IoTCentral/IoTApps",
-              "name": "[variables('iotcentral').subdomain]",
-              "apiVersion": "2018-09-01",
-              "location": "[parameters('_IotCentralLocation')]",
-              "tags": {
-                "ENV": "[variables('envTag')]"
-              },
-              "sku": {
-                "name": "[variables('iotcentral').sku]"
-              },
-              "properties": {
-                "displayName": "[variables('iotcentral').displayName]",
-                "subdomain": "[variables('iotcentral').subdomain]"
-              }
             }
           ]
         }
@@ -210,7 +160,6 @@
       "resourceGroup": "[resourceGroup().name]"
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.SignalRService/SignalR",
       "apiVersion": "[variables('signalr').apiVersion]",
       "name": "[variables('signalr').name]",
@@ -242,7 +191,7 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
+
       "type": "Microsoft.EventHub/namespaces",
       "apiVersion": "[variables('eventhubs').apiVersion]",
       "name": "[variables('eventhubs').nameSpace]",
@@ -315,7 +264,7 @@
       ]
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
+
       "type": "Microsoft.Devices/IotHubs",
       "apiVersion": "[variables('iothub').apiVersion]",
       "name": "[variables('iothub').name]",
@@ -425,8 +374,7 @@
       "resources": []
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
-      "type": "Microsoft.EventGrid/systemTopics",
+     "type": "Microsoft.EventGrid/systemTopics",
       "apiVersion": "[variables('eventGrid').apiVersion]",
       "name": "[variables('eventGrid').iothubSystemTopic]",
       "location": "[variables('location')]",
@@ -442,7 +390,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.EventGrid/systemTopics/eventSubscriptions",
       "apiVersion": "[variables('eventGrid').apiVersion]",
       "name": "[concat(variables('eventGrid').iothubSystemTopic, '/DeviceManagementEventSubscription')]",
@@ -476,7 +423,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "[variables('storage').apiVersion]",
       "name": "[variables('storage').name]",
@@ -490,7 +436,6 @@
       "kind": "StorageV2"
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "[variables('apps').apiVersion]",
       "name": "[variables('apps').hostingPlan]",
@@ -515,7 +460,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deployment').apiVersion]",
       "name": "Deploy-Functions",
@@ -593,7 +537,6 @@
       "resourceGroup": "[resourceGroup().name]"
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "[variables('apps').apiVersion]",
       "name": "[concat(variables('apps').functionsName, '/appsettings')]",
@@ -613,7 +556,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "[variables('deployment').apiVersion]",
       "name": "Deploy-Webapp",
@@ -669,7 +611,6 @@
       "resourceGroup": "[resourceGroup().name]"
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "[variables('apps').apiVersion]",
       "name": "[concat(variables('apps').webappName, '/appsettings')]",
@@ -686,7 +627,6 @@
       }
     },
     {
-      "condition": "[equals(parameters('IotCentral'), 'No')]",
       "type": "Microsoft.Devices/provisioningServices",
       "apiVersion": "[variables('dps').apiVersion]",
       "name": "[variables('dps').name]",

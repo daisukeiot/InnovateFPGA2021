@@ -2,15 +2,43 @@
 
 << Work in Progress>>
 
+## IoT Solution Pattern
+
+Typical IoT Solutions have 3 components :
+
+- Things  
+
+    Sensors and gateways. Often called devices, edge.
+
+- Insight
+
+    Sensors and gateways sends data to cloud application.  Data is ingested, processed, and analyzed to create business value.  For examples, temperature data is sent from a sensor, a cloud application monitors temperature of an engine.  If the temperature is too high or too low, the application determines something has to be done.
+
+    Sending data to cloud may take time and can be costly.  You may run `Insight`, or process data at edge to reduce latency/delay.  Azure IoT Edge provides application runtime to bring computing logic down to the edge.
+
+- Action  
+
+    Based on insight, the cloud application takes an action.  For example, sending a text message to notify driver that the engine is overheating.  
+    
+    Action can also be taken at the edge.  For example, a gateway may send alert/command to the engine to shutdown to prevent overheat.
+
+<< To do : add diagram >>
+
 ## Domains in the solution
 
 This solution is consist of 3 domains.
 
-- IoT Device and Data
-- Application
 - Device Management
 
-<< To do : Add descriptions/explanations >>
+    In order for a cloud application to consume data from devices, devices must be provisioned and connected to cloud.  A solution may require updating device firmware/device application.
+
+- IoT Device and Data
+
+    For an IoT solution to create business value, data must be made available to cloud application(s).  This domain covers how communication between `Things` and `Cloud Application` is established, how data flows and distributed, format of data, etc. 
+
+- Application
+
+    Once data is made available in cloud, a cloud application processes data. The application may 
 
 << To do : Update diagram >>
 

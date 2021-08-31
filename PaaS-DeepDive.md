@@ -1,6 +1,13 @@
 # A demo IoT solution to connect DE10-Nano to Azure IoT : Technical Deep Dive
 
-<< Work in Progress>>
+In this document, we will cover some of basic concepts, data flow, and data processing.  For an IoT Solution to be valuable, multiple things must happen : 
+
+- Provision DE10-Nano
+- Connect DE10-Nano
+- Send data from DE10-Nano to Cloud
+- Receive data in cloud
+- Route data to IoT application
+- Process data in IoT application
 
 ## IoT Solution Pattern
 
@@ -53,7 +60,7 @@ The sample IoT solution is consist of multiple technology domains.
     In order for a cloud application to ingest data from devices, devices must be provisioned and connected to cloud.  A solution may require updating device firmware/device application.  For example, solution administrators need to :  
 
     - Connect only devices that is known and trusted
-    - Monitor and manage devices remoetely
+    - Monitor and manage devices remotely
     - Capable of disconnecting devices if they are tampered
 
     The sample solution implements device provisioning through Azure Device Provisioning Service (DPS) using Symmetric Key with Individual Enrollment.  For broader provisioning (e.g. provision hundreds of devices), you may want to consider using X.509 certificate with Group Enrollment.  DPS works closely with IoT Hub to register and allow connection to IoT Hub.
@@ -165,17 +172,113 @@ export IOTHUB_DEVICE_DPS_DEVICE_KEY=<Symmetric Key>
 
 The device can send data such as Sensor data from RFS, as well as receive data from Cloud.  Upstream data is often called Device to Cloud messages (D2C).  Downstream data has 3 types.  1) Cloud to Device message (C2D), 2) Device Twin, and 3) Device Command (or method).
 
-Device Twin is used to communicate settings from Cloud to devices, which is called `Desired Property`, or `Writable Property` in Digital Twin/IoT Plug and PLay world.  Device Twin can also be used to communicate properties of the device to cloud, which is called `Reported Property`, or `Property` in Digital Twin/IoT Plug and Play world.  IoT Hub provides storage space for each device so that these settings are not lost.  The communication is asynchronous way.
+Device Twin is used to communicate settings from Cloud to devices, which is called `Desired Property`, or `Writable Property` in Digital Twin/IoT Plug and Play world.  Device Twin can also be used to communicate properties of the device to cloud, which is called `Reported Property`, or `Property` in Digital Twin/IoT Plug and Play world.  IoT Hub provides storage space for each device so that these settings are not lost.  The communication is asynchronous way.  Properties are communicated when the device connects to IoT Hub, and the device will receive any changes if it is online.
 
-Sometimes Cloud needs to communicate with the device and needs to ensure the communication is received.  This type of activities require `synchronous` communication.  In other words, the sender (Cloud application) sends data, and the receiver (device) must respond.  The requester needs to know if the receiver received data, and processed it or not.  This communication can be achieved using Device Method, or Command in Digital Twin/IoT Plug and Play world.
+Sometimes Cloud needs to communicate with the device and needs to ensure the communication is received.  This type of activities require `synchronous` communication.  In other words, when the sender (Cloud application) sends data, and the receiver (device) must respond.  If the device is offline, the command will fail with timeout.  The requester needs to know if the receiver received data, and processed it or not.  This communication can be achieved using Device Method, or Command in Digital Twin/IoT Plug and Play world.
+
+Communication is done in [IoT Plug and Play convention](https://docs.microsoft.com/azure/iot-develop/concepts-convention).
 
 ### Ingesting Data
 
-DE10-Nano reference application sends telemetry with Sensor Data every 2 seconds.  
+DE10-Nano reference application sends telemetry with Sensor Data every 2 seconds.
 
-## Processing Data
+You should see these telemetry from DE10-Nano :
 
-## Taking action
+Telemetry with sensor data (RFS)
+
+```json
+{
+  "lux": 0.6660000085830688,
+  "humidity": 43.93310546875,
+  "temperature": 22.831707000732422,
+  "mpu9250": {
+    "ax": 0.2968810200691223,
+    "ay": 0.3064578175544739,
+    "az": 9.96945571899414,
+    "gx": 0.037247881293296814,
+    "gy": 0.011706477031111717,
+    "gz": -0.004256900865584612,
+    "mx": 16.892578125,
+    "my": 27.33926010131836,
+    "mz": -1.9142580032348633
+  }
+}
+```
+
+Telemetry with gSensor data (onboard) 
+
+```json
+{
+  "gSensor": {
+    "x": -0.028,
+    "y": -0.024,
+    "z": 1.012
+  }
+}
+
+```
+
+IoT Hub can manage communication and receives data from DE10-Nano.  However, IoT Hub does not do anything with data.  Data has to be routed to the appropriate destination for processing.
+
+### Types of device data
+
+There are 2 types of device data :
+
+- Telemetry  
+
+    Also called messages, or Device-to-Cloud message (D2C).  Telemetry usually contains timestamp and sent in periodic fashion.  A single data point usually does not provide enough information to make a decision.  Telemetry data is often processed with other data points, and/or as a series of data.
+    
+    For example DE10-Nano's reference application sends sensor data every 2 seconds.  A single data point, such as `temperature`=`22` at October 1st, 2021 at 0:00 simply shows the fact.  However, by monitoring sensor data over 60 minutes, we can tell if the temperature is trending up or down, or had spikes and/or dips.
+
+- Events  
+
+    Events happens in sporadic fashion.  Events typically states `Something happened`.  For example, IoT Hub generates events when DE10-Nano is connected or disconnected.  Events often carries enough information about what happened, but usually you cannot tell why it happened. 
+
+## Message Routing
+
+IoT Hub receives data from authenticated devices, however, IoT Hub does not process data at all.  For example, if you do not save data, data from DE10-Nano will be removed.  
+
+> [!NOTE]  
+> IoT Hub has so called `built-in Event Hubs` which will keep messages for one day (default), up to 7 days.  
+> This is called `Message Retention`.
+> <https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin>
+
+Using IoT Hub's message routing, you can route any incoming messages to other services and applications.  The destination receives data with Publisher-Subscriber (PUB-SUB) fashion.  In a traditional communication (e.g. Server - Client), both ends must be available at the time of communication.  PUB-SUB does not require both ends to be available.  The middleman (called broker) will manage communication.  The sender (IoT Hub as Publisher) can send data and the receiver (Event Hubs as Subscriber) picks up data at will.  Azure Event Hubs is a broker service that keeps data (messages) for 1 day (by default) for the subscriber(s) to retrieve.
+
+> [!TIP]  
+> For solution with small number of devices, Built-in Event Hubs is enough to process data.  However, for the purpose of demo, it deploys Azure Event Hubs.
+
+> [!NOTE]  
+> IoT Hub's Built-in Event Hubs provides very similar functionalities as Azure Event Hubs, with a different set of limitations and quotas.  
+> The sample solution uses Free SKU of IoT Hub to keep the cost down.  Free SKU supports one additional endpoint and 5 routings.
+> <https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-quotas-throttling>
+
+![IoTHub-EventHub](images/IoTHub-EventHub.png)
+
+If you would like to add another subscriber to consume telemetry, you can create a separate Custom Endpoint or subscribe from `DeviceTelemetryToEventHub-DP` endpoint.
+
+> [!TIP]  
+> The sample solution also routes Device Twin Change events and Device Lifecycle events to `DeviceTelemetryToEventHub-EP`.  
+> The solution simply forwards events to Web app.  You may add additional processing as required.
+> See OnDeviceTwinChange(), On OnDeviceLifecycleChanged() functions. 
+
+## Event Distribution
+
+The sample solution implements Azure Event Grid to distribute events.  Similar to Telemetry, events are distributed in PUB-SUB fashion, while Event Grid is being a broker.  The publisher is IoT Hub, and the subscriber is WebApp.
+
+![IoTHub-EventGrid](images/IoTHub-EventGrid.png)
+
+If you are interested in listening to events from IoT Hub and/or DE10-Nano, you can add a new `Event Subscription` to IoT Hub.
+
+## Data Processing
+
+Device Events are simply sent to Web Application through Event Grid.  Device Telemetry is sent to Azure Functions for further processing.  [Azure Functions](https://azure.microsoft.com/services/functions/) is a serverless application written in .Net.  It listens to telemetry through Event Hubs, then format data for [Azure SignalR](https://azure.microsoft.com/services/signalr-service/) message.  The sample solution does not monitor data but you can add your business logic to OnTelemetryReceived() function.  
+
+For example, if you connect GPS to DE10-Nano and send location data to track movement of animals or shipment, you can update browser's view without having users to press refresh button by sending GPS telemetry data to WebApp in SignalR messages.
+
+## Actions
+
+The sample solution does not take any actions.  Depending on your use cases, you may want to add actions based on data and events from your DE10-Nano application.  For example, you can add sending SMS or email when AI model running in DE10-Nano found an animal. Or send warning message to Web UI when sensor data monitoring ocean temperature goes above or below threshold.
 
 ## Next Step
 

@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "IotCentralApplicationName": {
-      "defaultValue": "[concat('InnovateFPGA-',take(uniqueString(resourceGroup().id),5))]",
+      "defaultValue": "InnovateFPGA-IOTC",
       "minLength": 5,
       "maxLength": 32,
       "type": "String",

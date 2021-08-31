@@ -1,6 +1,6 @@
 # A demo IoT solution to connect DE10-Nano to Azure IoT : Technical Deep Dive
 
-In this document, we will cover some of basic concepts, data flow, and data processing.  For an IoT Solution to be valuable, multiple things must happen : 
+In this document, we will cover some of basic concepts, data flow, and data processing.  For an IoT Solution to be valuable, multiple things must happen :
 
 - Provision DE10-Nano
 - Connect DE10-Nano
@@ -17,68 +17,68 @@ Typical IoT Solutions have 4 building blocks :
 
 - Things  
 
-    Sensors and gateways. Often called devices, edge.  DE10-Nano Cloud Connectivity Kit is an edge device with sensor.  It also act as a gateway.
+  Sensors and gateways. Often called devices, edge.  DE10-Nano Cloud Connectivity Kit is an edge device with sensor.  It also act as a gateway.
 
 - Cloud Gateway  
 
-    Entry point to Azure cloud.  Azure IoT Hub is used in many solutions.  DE10-Nano Cloud Connectivity Kit connects to Azure IoT Hub to send telemetry.
+  Entry point to Azure cloud.  Azure IoT Hub is used in many solutions.  DE10-Nano Cloud Connectivity Kit connects to Azure IoT Hub to send telemetry.
 
 - Insights
 
-    Sensors and gateways sends data to cloud application through Cloud Gateway.  Data is ingested, processed, and analyzed to create business value.  For examples, temperature data of an engine is sent from a sensor, a cloud application monitors temperature of the engine.  When the temperature stays too high, the cloud application determines `Critical Condition`.
+  Sensors and gateways sends data to cloud application through Cloud Gateway.  Data is ingested, processed, and analyzed to create business value.  For examples, temperature data of an engine is sent from a sensor, a cloud application monitors temperature of the engine.  When the temperature stays too high, the cloud application determines `Critical Condition`.
 
-    Sending data to cloud may take time and can be costly.  You may run `Insights`, or process data at edge to reduce latency/delay.  Azure IoT Edge provides application runtime to bring computing logic down to the edge.
+  Sending data to cloud may take time and can be costly.  You may run `Insights`, or process data at edge to reduce latency/delay.  Azure IoT Edge provides application runtime to bring computing logic down to the edge.
 
 - Action  
 
-    Based on insight, the cloud application takes an action.  For example, sending a text message to notify driver that the engine is overheating.  
-    Action can also be taken at the edge.  For example, a gateway may send alert/command to the engine to shutdown to prevent overheat.
+  Based on insight, the cloud application takes an action.  For example, sending a text message to notify driver that the engine is overheating.  
+  Action can also be taken at the edge.  For example, a gateway may send alert/command to the engine to shutdown to prevent overheat.
 
 ## Domains in the solution
 
 The sample IoT solution is consist of multiple technology domains.
 
-- Security domain 
+- Security domain  
 
-    Typically solutions requires multiple security aspects.  To keep the sample solution simple, the sample solution implements minimum security.  
+  Typically solutions requires multiple security aspects.  To keep the sample solution simple, the sample solution implements minimum security.  
 
-    - Device Authentication via DPS and IoT Hub.
-    - No user authentication.
-    - Azure IoT Services are protected via connection strings or keys
+  - Device Authentication via DPS and IoT Hub.
+  - No user authentication.
+  - Azure IoT Services are protected via connection strings or keys
 
-    > [!IMPORTANT]  
-    > If you plan to make the web site available, consider adding Azure Active Directory (AAD) based Role Based Access Control (RBAC) to the web app.  
-    >  
-    > <https://docs.microsoft.com/azure/azure-app-configuration/concept-enable-rbac>
+  > [!IMPORTANT]  
+  > If you plan to make the web site available, consider adding Azure Active Directory (AAD) based Role Based Access Control (RBAC) to the web app.  
+  >  
+  > <https://docs.microsoft.com/azure/azure-app-configuration/concept-enable-rbac>
 
 - Business and Industrial domain
 
-    Solutions are typically designed and built for a specific use cases.  Business requirements as well as industrial requirements determines additional requirements to be implemented.  For example, monitoring engine's temperature for tracks and factory machineries may have different set of requirements.  The sample solution does not implement specific business nor industrial requirements to keep generic enough as a template.  Consider adding business or industrial requirements to your solution for your use case.  For example, requirements for animal tracking/monitoring solution may be very different from energy conservation solution.
+  Solutions are typically designed and built for a specific use cases.  Business requirements as well as industrial requirements determines additional requirements to be implemented.  For example, monitoring engine's temperature for tracks and factory machineries may have different set of requirements.  The sample solution does not implement specific business nor industrial requirements to keep generic enough as a template.  Consider adding business or industrial requirements to your solution for your use case.  For example, requirements for animal tracking/monitoring solution may be very different from energy conservation solution.
 
 - Device Management domain
 
-    In order for a cloud application to ingest data from devices, devices must be provisioned and connected to cloud.  A solution may require updating device firmware/device application.  For example, solution administrators need to :  
+  In order for a cloud application to ingest data from devices, devices must be provisioned and connected to cloud.  A solution may require updating device firmware/device application.  For example, solution administrators need to :  
 
-    - Connect only devices that is known and trusted
-    - Monitor and manage devices remotely
-    - Capable of disconnecting devices if they are tampered
+  - Connect only devices that is known and trusted
+  - Monitor and manage devices remotely
+  - Capable of disconnecting devices if they are tampered
 
-    The sample solution implements device provisioning through Azure Device Provisioning Service (DPS) using Symmetric Key with Individual Enrollment.  For broader provisioning (e.g. provision hundreds of devices), you may want to consider using X.509 certificate with Group Enrollment.  DPS works closely with IoT Hub to register and allow connection to IoT Hub.
+  The sample solution implements device provisioning through Azure Device Provisioning Service (DPS) using Symmetric Key with Individual Enrollment.  For broader provisioning (e.g. provision hundreds of devices), you may want to consider using X.509 certificate with Group Enrollment.  DPS works closely with IoT Hub to register and allow connection to IoT Hub.
 
 - IoT Data domain
 
-    For an IoT solution to create business value, data must be made available to cloud application(s).  This domain covers how communication between `Things` and `Cloud Application` through Cloud Gateway.  This domain determines how data flows into cloud, then distributed to IoT application.  
+  For an IoT solution to create business value, data must be made available to cloud application(s).  This domain covers how communication between `Things` and `Cloud Application` through Cloud Gateway.  This domain determines how data flows into cloud, then distributed to IoT application.  
 
 - Application domain
 
-    Once data is made available in cloud, a cloud application processes data. This domain is where you make value from data, which is usually determined by :
+  Once data is made available in cloud, a cloud application processes data. This domain is where you make value from data, which is usually determined by :
 
-    - Business problem to be solved
-    - Requirements from use cases, business, and/or industry
+  - Business problem to be solved
+  - Requirements from use cases, business, and/or industry
 
-    For example, a super simple use case (or business problem) may be "how do I visualize large amount of data?".  Visualizing millions of data points with a personal computer may take very long time, however, cloud can provide enough computing power to draw charts and graphs for millions of data points.
+  For example, a super simple use case (or business problem) may be "how do I visualize large amount of data?".  Visualizing millions of data points with a personal computer may take very long time, however, cloud can provide enough computing power to draw charts and graphs for millions of data points.
 
-    The sample solution simply displays data from the device in real-time.  To keep the solution simple (and be cost effective), it does not store data.
+  The sample solution simply displays data from the device in real-time.  To keep the solution simple (and be cost effective), it does not store data.
 
 ![Solution Diagram](images/solution-diagram.png)
 
@@ -112,16 +112,16 @@ In the sample solution portal, you can manage enrollment with :
 
 1. Click `Device Management` menu, then click `Device Provisioning (DPS)`
 
-    ![App 01](images/App-01.png)
+  ![App 01](images/App-01.png)
 
 1. Click `Add New Enrollment`
 
-    ![App 02](images/App-02.png)
+  ![App 02](images/App-02.png)
 
 1. Enter `Enrollment Name`
 1. Select Individual or Group enrollment  
 
-    If you are planning to provision a single device, select `Individual`.  If you are provisioning multiple devices, select `Group` to manage as a group or create multiple `Individual` enrollments.
+  If you are planning to provision a single device, select `Individual`.  If you are provisioning multiple devices, select `Group` to manage as a group or create multiple `Individual` enrollments.
 
 1. Turn on `IoT Edge` if you are provisioning Azure IoT Edge device
 
@@ -130,15 +130,15 @@ In Azure Portal, you can manage enrollments with :
 1. Navigate to <https://portal.azure.com> and sign in with your Microsoft account.
 1. Select `Resource groups` from the menu, then select your resource group  
 
-    ![Portal 01](images/Portal-01.png)
+  ![Portal 01](images/Portal-01.png)
 
 1. Select `Device Provisioning Service` instance from the list  
 
-    ![Portal 02](images/Portal-02.png)
+  ![Portal 02](images/Portal-02.png)
 
 1. Select `Manage Enrollments`  
 
-    ![Portal 03](images/Portal-03.png)
+  ![Portal 03](images/Portal-03.png)
 
 Learn more about managing enrollments : <https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments>
 
@@ -205,7 +205,7 @@ Telemetry with sensor data (RFS)
 }
 ```
 
-Telemetry with gSensor data (onboard) 
+Telemetry with gSensor data (onboard)
 
 ```json
 {
@@ -226,13 +226,13 @@ There are 2 types of device data :
 
 - Telemetry  
 
-    Also called messages, or Device-to-Cloud message (D2C).  Telemetry usually contains timestamp and sent in periodic fashion.  A single data point usually does not provide enough information to make a decision.  Telemetry data is often processed with other data points, and/or as a series of data.
-    
-    For example DE10-Nano's reference application sends sensor data every 2 seconds.  A single data point, such as `temperature`=`22` at October 1st, 2021 at 0:00 simply shows the fact.  However, by monitoring sensor data over 60 minutes, we can tell if the temperature is trending up or down, or had spikes and/or dips.
+  Also called messages, or Device-to-Cloud message (D2C).  Telemetry usually contains timestamp and sent in periodic fashion.  A single data point usually does not provide enough information to make a decision.  Telemetry data is often processed with other data points, and/or as a series of data.
+
+  For example DE10-Nano's reference application sends sensor data every 2 seconds.  A single data point, such as `temperature`=`22` at October 1st, 2021 at 0:00 simply shows the fact.  However, by monitoring sensor data over 60 minutes, we can tell if the temperature is trending up or down, or had spikes and/or dips.
 
 - Events  
 
-    Events happens in sporadic fashion.  Events typically states `Something happened`.  For example, IoT Hub generates events when DE10-Nano is connected or disconnected.  Events often carries enough information about what happened, but usually you cannot tell why it happened. 
+  Events happens in sporadic fashion.  Events typically states `Something happened`.  For example, IoT Hub generates events when DE10-Nano is connected or disconnected.  Events often carries enough information about what happened, but usually you cannot tell why it happened.
 
 ## Message Routing
 
@@ -260,7 +260,7 @@ If you would like to add another subscriber to consume telemetry, you can create
 > [!TIP]  
 > The sample solution also routes Device Twin Change events and Device Lifecycle events to `DeviceTelemetryToEventHub-EP`.  
 > The solution simply forwards events to Web app.  You may add additional processing as required.
-> See OnDeviceTwinChange(), On OnDeviceLifecycleChanged() functions. 
+> See OnDeviceTwinChange(), On OnDeviceLifecycleChanged() functions.
 
 ## Event Distribution
 
@@ -276,9 +276,11 @@ Device Events are simply sent to Web Application through Event Grid.  Device Tel
 
 For example, if you connect GPS to DE10-Nano and send location data to track movement of animals or shipment, you can update browser's view without having users to press refresh button by sending GPS telemetry data to WebApp in SignalR messages.
 
+![SignalR](images/SignalR.png)
+
 ## Actions
 
-The sample solution does not take any actions.  Depending on your use cases, you may want to add actions based on data and events from your DE10-Nano application.  For example, you can add sending SMS or email when AI model running in DE10-Nano found an animal. Or send warning message to Web UI when sensor data monitoring ocean temperature goes above or below threshold.
+The sample solution does not take any actions.  The action it performs is re-formatting telemetry into SignalR message and send SignalR messages to SinglR service.  Depending on your use cases, you may want to add actions based on data and events from your DE10-Nano application.  For example, you can add sending SMS or email when AI model running in DE10-Nano found an animal. Or send warning message to Web UI when sensor data monitoring ocean temperature goes above or below threshold.
 
 ## Next Step
 

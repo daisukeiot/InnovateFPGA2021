@@ -43,11 +43,11 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 1. Click `Outputs` in the left pane, then copy Web app's URL by clicking the blue button on the right.
 
-    ![PaaS04](images/SaaS-04.png)
+  ![PaaS04](images/SaaS-04.png)
 
 1. Open a new browser tab to access your new IoT Central application
 
-    ![SaaS05](images/SaaS-05.png)
+  ![SaaS05](images/SaaS-05.png)
 
 > [!TIP]  
 > You can navigate to your IoT Central application from <https://azureiotcentral.com>

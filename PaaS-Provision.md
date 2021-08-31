@@ -17,27 +17,27 @@ An [enrollment](https://docs.microsoft.com/azure/iot-dps/concepts-service#enroll
 1. Click `Device Management` menu in the navigation bar  
 1. Click `Device Provisioning (DPS)`
 
-    ![DPS01](images/DPS-01.png)
+  ![DPS01](images/DPS-01.png)
 
 1. Click `Add New Enrollment` to expand menu
 
-    ![DPS02](images/DPS-02.png)
+  ![DPS02](images/DPS-02.png)
 
 1. Provide enrollment information  
 
-    |Setting  |Description  |Example  |
-    |---------|---------|---------|
-    |Enrollment Name     | Name of new enrollment.  This name becomes Device ID in IoT Hub. | DE10-Nano      |
-    |Enrollment Type    | Enrollment can be individual or group.  Group enrollment is used when you are provisioning more than 1 devices to IoT solution.  Select individual.   | Individual.         |
-    |Capability     | If you are running Azure IoT Edge module, enable IoT Edge.  In this instruction, we will use Python App.         |         |
+  |Setting  |Description  |Example  |
+  |---------|---------|---------|
+  |Enrollment Name     | Name of new enrollment.  This name becomes Device ID in IoT Hub. | DE10-Nano      |
+  |Enrollment Type    | Enrollment can be individual or group.  Group enrollment is used when you are provisioning more than 1 devices to IoT solution.  Select individual.   | Individual.         |
+  |Capability     | If you are running Azure IoT Edge module, enable IoT Edge.  In this instruction, we will use Python App.         |         |
 
-    ![DPS03](images/DPS-03.png)
+  ![DPS03](images/DPS-03.png)
 
 1. Click `Create` to create a new individual enrollment
 
-    You should see a new enrollment in the list box above.
+  You should see a new enrollment in the list box above.
 
-    ![DPS04](images/DPS-04.png)
+  ![DPS04](images/DPS-04.png)
 
 ## 2. Configure your DE10-Nano with DPS provisioning information
 

@@ -41,7 +41,7 @@ An [enrollment](https://docs.microsoft.com/azure/iot-dps/concepts-service#enroll
 
 ## 2. Configure your DE10-Nano with DPS provisioning information
 
-In order to provision your DE10-Nano through DPS, the device application requires following information.
+In order to provision your DE10-Nano through DPS, the device application requires following information.  
 
 | Information     | Description  | Example     |
 |-----------------|--------------|-------------|
@@ -61,6 +61,12 @@ export IOTHUB_DEVICE_DPS_ID_SCOPE='0ne0037CE3D'
 export IOTHUB_DEVICE_DPS_DEVICE_ID='DE10-Nano'
 export IOTHUB_DEVICE_DPS_DEVICE_KEY='L2MD3xTyzPTJsdxw8/BAd+0ylYmT3QblLfgzlooriLjMN6UcFXQ8KPw/zTACdQhNE/uxWmHFzixcsDhhX5A2KdfdafdQ=='
 ```
+
+If you are provisioning DE10-Nano as Azure IoT Edge device, please follow this instruction to edit `/etc/aziot/config.toml` file.
+
+<https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11>
+
+Authenticate with symmetric keys : <https://docs.microsoft.com/azure/iot-edge/how-to-auto-provision-symmetric-keys?view=iotedge-2020-11&tabs=linux#configure-the-device-with-provisioning-information>
 
 ## 3. Run reference device application
 

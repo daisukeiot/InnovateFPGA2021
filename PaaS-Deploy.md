@@ -33,7 +33,7 @@ Click **Deploy to Azure** button below.  The button will take you to Azure Porta
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdaisukeiot%2FInnovateFPGA2021%2Fmain%2Fazuredeploy.json)
 
 > [!TIP]  
-> Right click the button below and select **Open link in new tab** or **Open lin in new window**
+> Right click the button below and select **Open link in new tab** or **Open link in new window**
 
 ## 2. Basic settings for your solution
 

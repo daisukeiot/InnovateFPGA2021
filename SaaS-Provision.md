@@ -24,38 +24,38 @@ Your IoT Central application is pre-configured for DE10-Nano, using IoT Plug and
 1. Navigate to your IoT Central Application
 1. Navigate to `Devices` page  
 
-  Click `Devices`, then click `FPGA Cloud Connectivity Kit`
+    Click `Devices`, then click `FPGA Cloud Connectivity Kit`
 
-  ![IOTC01](images/IoTC-01.png)
+    ![IOTC01](images/IoTC-01.png)
 
 1. Create a new device
 
-  Enter `Device name` and `Device ID` (they can be same), then select `FPGA Cloud Connectivity Kit` from the list for Device Template.  
-  Click `Create` to create a new device for your DE10-Nano.
+    Enter `Device name` and `Device ID` (they can be same), then select `FPGA Cloud Connectivity Kit` from the list for Device Template.  
+    Click `Create` to create a new device for your DE10-Nano.
 
-  |Setting  |Description  |Example  |
-  |---------|---------|---------|
-  |Device Name     | End user friendly name appears in UI        | DE10-Nano         |
-  |Device ID     | Device Identity used for connection           | DE10-Nano         |
-  |Device Template     | Select FPGA Cloud Connectivity Kit         |         |
-  |Simlate this device?     | If you do not have a device, IoT Central can simulate device telemetry etc.  Select `No` since you are connecting real device.         |         |
+    |Setting  |Description  |Example  |
+    |---------|---------|---------|
+    |Device Name     | End user friendly name appears in UI        | DE10-Nano         |
+    |Device ID     | Device Identity used for connection           | DE10-Nano         |
+    |Device Template     | Select FPGA Cloud Connectivity Kit         |         |
+    |Simlate this device?     | If you do not have a device, IoT Central can simulate device telemetry etc.  Select `No` since you are connecting real device.         |         |
 
-  ![IOTC02](images/IoTC-02.png)
+    ![IOTC02](images/IoTC-02.png)
 
-1. Confirm you have a new device for your DE10-Nano
-
-  ![IOTC03](images/IoTC-03.png)
-
-  > [!NOTE]  
-  > Device is in `Registered` state.
+1. Confirm you have a new device for your DE10-Nano  
+  
+    ![IOTC03](images/IoTC-03.png)
+  
+    > [!NOTE]  
+    > Device is in `Registered` state.
 
 1. Click on Device Name to open device's detail page, then click `Connect`  
 
-  ![IOTC04](images/IoTC-04.png)
+    ![IOTC04](images/IoTC-04.png)
 
 1. You can see information to provision your DE10-Nano to IoT Central application  
 
-  ![IOTC05](images/IoTC-05.png)
+    ![IOTC05](images/IoTC-05.png)
 
 ## 2. Configure your DE10-Nano with DPS provisioning information
 

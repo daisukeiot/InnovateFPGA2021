@@ -14,14 +14,16 @@ IoT Central is an IoT application platform that reduces the burden and cost of d
 
 Each instance of IoT Central deployment is called `IoT Central Application`.  For your convenience, we prepared a customized IoT Central application, and made it available through [IoT Central Application Template](https://docs.microsoft.com/azure/iot-central/core/concepts-app-templates).
 
-## 1. Click **Deploy to Azure** button below to deploy IoT Central Application
+## 1. Start deploying Azure IoT Central
+
+Click **Deploy to Azure** button below to deploy IoT Central Application
 
 > [!TIP]  
 > Right click the button below and select **Open link in new tab** or **Open lin in new window**
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdaisukeiot%2FInnovateFPGA2021%2Fmain%2Fazuredeployiotc.json)
 
-## 2. Configure Details for IoT Central deployment
+## 2. Provide parameters for IoT Central deployment
 
 ![SaaS01](images/SaaS-01.png)
 
@@ -51,11 +53,11 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 1. Click `Outputs` in the left pane, then copy Web app's URL by clicking the blue button on the right.
 
-  ![PaaS04](images/SaaS-04.png)
+    ![PaaS04](images/SaaS-04.png)
 
 1. Open a new browser tab to access your new IoT Central application
 
-  ![SaaS05](images/SaaS-05.png)
+    ![SaaS05](images/SaaS-05.png)
 
 > [!TIP]  
 > You can navigate to your IoT Central application from <https://azureiotcentral.com>

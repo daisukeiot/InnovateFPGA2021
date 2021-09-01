@@ -88,7 +88,7 @@ The sample IoT solution is consist of multiple technology domains.
 
   The sample solution simply displays data from the device in real-time.  To keep the solution simple (and be cost effective), it does not store data.
 
-![Solution Diagram](images/solution-diagram.png)
+  ![Solution Diagram](images/solution-diagram.png)
 
 ## IoT Device and Data domain
 
@@ -118,18 +118,18 @@ Device Provisioning Service (DPS) provides functionalities to provision your IoT
 
 In the sample solution portal, you can manage enrollment with :
 
-1. Click `Device Management` menu, then click `Device Provisioning (DPS)`
+1. Click `Device Management` menu, then click `Device Provisioning (DPS)`  
 
-  ![App 01](images/App-01.png)
+    ![App 01](images/App-01.png)
 
 1. Click `Add New Enrollment`
 
-  ![App 02](images/App-02.png)
+    ![App 02](images/App-02.png)
 
 1. Enter `Enrollment Name`
 1. Select Individual or Group enrollment  
-
-  If you are planning to provision a single device, select `Individual`.  If you are provisioning multiple devices, select `Group` to manage as a group or create multiple `Individual` enrollments.
+  
+    If you are planning to provision a single device, select `Individual`.  If you are provisioning multiple devices, select `Group` to manage as a group or create multiple `Individual` enrollments.
 
 1. Turn on `IoT Edge` if you are provisioning Azure IoT Edge device
 
@@ -138,15 +138,15 @@ In Azure Portal, you can manage enrollments with :
 1. Navigate to <https://portal.azure.com> and sign in with your Microsoft account.
 1. Select `Resource groups` from the menu, then select your resource group  
 
-  ![Portal 01](images/Portal-01.png)
+    ![Portal 01](images/Portal-01.png)
 
 1. Select `Device Provisioning Service` instance from the list  
 
-  ![Portal 02](images/Portal-02.png)
+    ![Portal 02](images/Portal-02.png)
 
 1. Select `Manage Enrollments`  
 
-  ![Portal 03](images/Portal-03.png)
+    ![Portal 03](images/Portal-03.png)
 
 Learn more about managing enrollments : <https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments>
 

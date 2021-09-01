@@ -1,6 +1,7 @@
 ---
 date : 9/1/2021
 author : Daisuke Nakahara <daisuken@microsoft.com>
+reviewer : Berry Tsai <betsai@microsoft.com>; Takehiro Hirai <takehiro.hirai@microsoft.com>
 Maintainer : 
 title : Azure IoT Sample Solution provisioning DE10-nano
 ---

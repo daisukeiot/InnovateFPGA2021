@@ -85,6 +85,10 @@ Once your DE10-Nano is provisioned and connected, you should see device events s
 
 Learn more about Device Events from IoT Hub : <https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-event-grid#event-types>
 
+> [!CAUTION]  
+> The reference application sends 2 telemetry messages every 10 seconds.   You will hit daily quota of 8000 messages per day in 11 hours.  
+> Please make sure you turn off the device or stop the app when you are not using it.
+
 ## Completed
 
 Congratulations.  You are now connect to IoT Hub and you can visualize device events from IoT Hub and telemetry from your DE10-Nano.

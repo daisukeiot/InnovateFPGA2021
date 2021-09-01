@@ -344,6 +344,16 @@ The dashboard should show `DeviceConnected` device event.
 
 ![App 06](images/App-06.png)
 
+> [!CAUTION]  
+> The reference application sends 2 telemetry messages every 10 seconds.   You will hit daily quota of 8000 messages per day in 11 hours.  
+> Please make sure you turn off the device or stop IoT Edge when you are not using it.
+>
+> To stop IoT Edge, run
+>
+> ```bash
+> iotedge system stop
+> ```
+
 ## Completed
 
 Congratulations!  You are now connect to IoT Hub and you can deploy IoT Edge module to DE10-Nano.

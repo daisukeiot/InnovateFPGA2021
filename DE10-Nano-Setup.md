@@ -93,7 +93,7 @@ Learn more about supported OS <https://docs.microsoft.com/azure/iot-edge/support
     ```
 
 1. Expand partition
-    
+
     ```bash
     root@de10nano:~# resize2fs /dev/mmcblk0p2
     resize2fs 1.42.13 (17-May-2015)
@@ -103,7 +103,7 @@ Learn more about supported OS <https://docs.microsoft.com/azure/iot-edge/support
     ```
 
 1. Update package list  
-    
+
     ```bash
     apt update && \
     apt upgrade -y && \
@@ -153,7 +153,7 @@ DE10-Nano does not have hardware MAC address, therefore, IP address assigned by 
 
 1. Add following block to the end of the file  
 
-  e.g. Setting Static IP to 192.168.1.2
+    e.g. Setting Static IP to 192.168.1.2
 
     ```bash
     auto eth0
@@ -289,7 +289,7 @@ sudo dd bs=1M if=/dev/sdb of=/home/Ubuntu18_1.img
     ```
 
 1. Copy and paste `ID Scope`, `Enrollment Name`, and `Symmetric Key` from web UI to config.toml file using `copy` buttons.
-    
+
     ```bash
     ## DPS provisioning with symmetric key
     [provisioning]

@@ -1,3 +1,10 @@
+---
+date : 9/1/2021
+author : Daisuke Nakahara <daisuken@microsoft.com>
+Maintainer : 
+title : Azure Account Sign up instruction
+---
+
 # Sign up Azure Subscription
 
 Creating an Azure free account is one way to access Azure services. When you start using Azure with a free account, you get $200 credit to spend in the first 30 days after you sign up. In addition, you get free monthly amounts of two groups of services: Popular services, which are free for 12 months, and 25+ other services that are free always. Free services are based on resource and region availability.

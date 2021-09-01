@@ -1,6 +1,24 @@
-# Setup DE10-Nano
+---
+date : 9/1/2021
+author : Daisuke Nakahara <daisuken@microsoft.com>
+Maintainer : 
+title : DE10-Nano setup instruction for Azure IoT Edge
+---
+
+# Setting up DE10-Nano to run Azure IoT Edge
+
+The reference device application can be run as a docker container application.  Azure IoT Edge provides runtime environment to host containerized application.
+
+Learn more about Azure IoT Edge : <https://azure.microsoft.com/services/iot-edge/>
+
+> [!IMPORTANT]  
+> Please make sure to run Azure IoT Edge runtime version 1.2.4 or above.
 
 ## Upgrade to Ubuntu 18.04
+
+In order to run Azure IoT Edge, please upgrade to Ubuntu 18.04.
+
+Learn more about supported OS <https://docs.microsoft.com/azure/iot-edge/support?view=iotedge-2020-11#operating-systems>
 
 1. Burn SD Card with <http://download.terasic.com/downloads/cd-rom/de10-nano/DE10-Nano-Cloud-Native.zip>
 1. Increase partition  

@@ -1,3 +1,10 @@
+---
+date : 9/1/2021
+author : Daisuke Nakahara <daisuken@microsoft.com>
+Maintainer : 
+title : Azure IoT Sample Solution Deployment
+---
+
 # Deploy PaaS IoT Solution
 
 << Draft : Ready for review>>
@@ -69,11 +76,11 @@ Once the deployment is completed, navigate to the sample Web Application to conf
 
 1. Click `Outputs` in the left pane, then copy Web app's URL by clicking the blue button on the right.
 
-    ![PaaS06](images/PaaS-06.png)
+  ![PaaS06](images/PaaS-06.png)
 
 1. Open a new browser tab to access your solution
 
-    ![PaaS07](images/PaaS-07.png)
+  ![PaaS07](images/PaaS-07.png)
 
 > [!TIP]  
 > You can find Web App's URL in `App Service` instance in Azure Portal.

@@ -1,3 +1,10 @@
+---
+date : 9/1/2021
+author : Daisuke Nakahara <daisuken@microsoft.com>
+Maintainer : 
+title : Deploy IoT Central for InnovateFPGA 2021
+---
+
 # SaaS IoT Solution : Azure IoT Central
 
 << Draft : Ready for review.  Will update screenshots >>

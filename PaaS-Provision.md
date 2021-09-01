@@ -1,3 +1,10 @@
+---
+date : 9/1/2021
+author : Daisuke Nakahara <daisuken@microsoft.com>
+Maintainer : 
+title : Azure IoT Sample Solution provisioning DE10-nano
+---
+
 # Connecting DE10-Nano to your IoT Solution
 
 << Draft : Ready for review>>

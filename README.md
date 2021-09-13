@@ -8,8 +8,6 @@ title : Azure IoT Sample Solution for InnovateFPGA 2021
 
 # InnovateFPGA2021 Design Contest
 
-<< Draft : Ready for review >>
-
 ![InnovateFPGA Logo](images/Navbar-Logo.png)
 
 ## Requirements

@@ -1,4 +1,4 @@
-# InnovateFPGA2021 Design Contest
+# InnovateFPGA Design Contest 2021
 
 ![InnovateFPGA Logo](images/Navbar-Logo.png)
 

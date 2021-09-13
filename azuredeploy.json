@@ -3,7 +3,6 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "UniqueID": {
-      "defaultValue": "",
       "minLength": 5,
       "maxLength": 12,
       "type": "String",

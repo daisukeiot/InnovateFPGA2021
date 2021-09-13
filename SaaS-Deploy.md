@@ -8,8 +8,6 @@ title : Deploy IoT Central for InnovateFPGA 2021
 
 # SaaS IoT Solution : Azure IoT Central
 
-<< Draft : Ready for review.  Will update screenshots >>
-
 IoT Central is an IoT application platform that reduces the burden and cost of developing, managing, and maintaining enterprise-grade IoT solutions.  To learn more about IoT Central, please visit [IoT Central documentation](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central).
 
 Each instance of IoT Central deployment is called `IoT Central Application`.  For your convenience, we prepared a customized IoT Central application, and made it available through [IoT Central Application Template](https://docs.microsoft.com/azure/iot-central/core/concepts-app-templates).

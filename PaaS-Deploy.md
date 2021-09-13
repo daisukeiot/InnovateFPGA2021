@@ -8,8 +8,6 @@ title : Azure IoT Sample Solution Deployment
 
 # Deploy PaaS IoT Solution
 
-<< Draft : Ready for review>>
-
 This sample solution is built with 6 Azure IoT Platform services.
 
 - Azure [IoT Hub](https://azure.microsoft.com/services/iot-hub/) : To establish secure bi-directional communication with DE10-Nano.

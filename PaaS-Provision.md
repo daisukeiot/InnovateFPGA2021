@@ -8,8 +8,6 @@ title : Azure IoT Sample Solution provisioning DE10-nano
 
 # Connecting DE10-Nano to your IoT Solution
 
-<< Draft : Ready for review>>
-
 In order to connect your DE10-Nano to Azure IoT Hub, you must provision your DE10-Nano.  Provisioning is done through Device Provisioning Service (DPS).
 Once your DE10-Nano is provisioned, it can connect to IoT Hub.  Steps involved in connecting DE10-Nano are :
 

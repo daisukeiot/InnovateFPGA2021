@@ -1,11 +1,3 @@
----
-date : 9/1/2021
-author : Daisuke Nakahara <daisuken@microsoft.com>
-reviewer : Berry Tsai <betsai@microsoft.com>; Takehiro Hirai <takehiro.hirai@microsoft.com>
-Maintainer : 
-title : Azure IoT Sample Solution (PaaS) Deep Dive
----
-
 # A demo IoT solution to connect DE10-Nano to Azure IoT : Technical Deep Dive
 
 In this document, we will cover some of basic concepts, data flow, and data processing.  For an IoT Solution to be valuable, multiple things must happen :
